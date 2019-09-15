@@ -1,5 +1,5 @@
 pipeline:
-#Test
+
   build:
     image: maven:3.5-jdk-8
     commands:
