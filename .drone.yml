@@ -13,8 +13,6 @@ pipeline:
       - docker tag spring-boot:master docker.io/conleyxie/spring-boot:master
       - docker push docker.io/conleyxie/spring-boot:master
       - echo 'success'
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
       
   ssh:
     image: appleboy/drone-ssh
