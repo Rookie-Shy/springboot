@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 
 steps: 
-  - name: info
+  - name: busybox
     image: busybox:latest
     commands:
       - echo "hello:world!"
