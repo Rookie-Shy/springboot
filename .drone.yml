@@ -1,15 +1,7 @@
-clone:
-  git:
-    image: plugins/git
+kind: pipeline
+name: default
 
-pipeline:
-
-  backend:
-    image: reg.mritd.me/base/build:2.1.5
-    commands:
-      - gradle --no-daemon clean assemble
-    when:
-      branch:
-        event: [ push, pull_request ]
-        include: [ master ]
-        exclude: [ develop ]
+steps:
+  - name: bs
+    image: busybox
+    
