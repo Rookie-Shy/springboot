@@ -1,14 +1,8 @@
-kind: pipeline 
-name: default 
-steps:  
-  - name: info  
-    image: busybox  
+kind: pipeline
+name: default
+
+steps: 
+  - name: info
+    image: busybox
     commands:
       - echo "hello:world!"
-
-trigger:
-  branch:  
-    - master  
-  event:  
-    - push  
-    -  
