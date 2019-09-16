@@ -1,6 +1,6 @@
 kind: pipeline  
 name: default  
-    
+#step 1
 steps:  
   - name: info  
     image: busybox  
