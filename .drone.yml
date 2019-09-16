@@ -1,26 +1,29 @@
-kind: pipeline
-name: dev
+kind: pipeline
+name: default
+
 steps:
-  - name: build
-    image: maven:3.5-jdk-8
-    commands:
-      - mvn package -B -Dmaven.test.skip=true
-  
-  - name: push
-    image: docker:dind
-    commands:
-      - docker login --username=conleyxie --password=xcl@900123
-      - docker build -t spring-boot:master -f Dockerfile .
-      - docker tag spring-boot:master docker.io/conleyxie/spring-boot:master
-      - docker push docker.io/conleyxie/spring-boot:master
-      - echo 'success'
+  - name: restore-cache
+    image: drone-vulume-cache
+    volumes:
+      - name: cache
+        path: /tmp/maven
+    settings:
+      restore: true
+      mount:
+        - ./repo
+     
+         
+volumes:
+  - name: cache
+    host: 
+      path: /tmp/cache
       
-  - name: ssh
-    image: appleboy/drone-ssh
-    host: 192.168.224.140
-    username: root
-    password: xcl@900123
-    port: 22
-    script:
-      - docker run -p 8085:7001 -d  docker.io/conleyxie/spring-boot:master 
-      
+ 
+ #触发器
+ trigger:
+   branch:
+     include:
+       - master*
+   event:
+     include:
+     - push
