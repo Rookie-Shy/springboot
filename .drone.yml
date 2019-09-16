@@ -1,8 +1,15 @@
-kind: pipeline
-name: default
+clone:
+  git:
+    image: plugins/git
 
-steps: 
-  - name: busybox
-    image: busybox:latest
-    commands:
-      - echo "hello:world!"
+pipeline:
+
+  backend:
+    image: reg.mritd.me/base/build:2.1.5
+    commands:
+      - gradle --no-daemon clean assemble
+    when:
+      branch:
+        event: [ push, pull_request ]
+        include: [ master ]
+        exclude: [ develop ]
