@@ -1,7 +1,9 @@
 kind: pipeline
 name: default
-#
+#Test
 steps:
 - name: bs
   image: busybox
+  commands:
+    - echo "hello world"
     
