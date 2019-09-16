@@ -1,11 +1,12 @@
-pipeline:
-
-  build:
+kind: pipeline
+name: dev
+steps:
+  - name: build
     image: maven:3.5-jdk-8
     commands:
       - mvn package -B -Dmaven.test.skip=true
   
-  push:
+  - name: push
     image: docker:dind
     commands:
       - docker login --username=conleyxie --password=xcl@900123
@@ -14,7 +15,7 @@ pipeline:
       - docker push docker.io/conleyxie/spring-boot:master
       - echo 'success'
       
-  ssh:
+  - name: ssh
     image: appleboy/drone-ssh
     host: 192.168.224.140
     username: root
