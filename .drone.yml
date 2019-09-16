@@ -1,8 +1,7 @@
-kind: pipeline
+kind: pipeline
 name: default
 
 steps:
-  - name: bs
-    image: busybox
+- name: bs
+  image: busybox
     
-# test
