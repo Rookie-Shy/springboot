@@ -1,27 +1,7 @@
 pipeline:
-
+###Test
   build:
-    image: maven:3.5-jdk-8
+    image: busybox
     commands:
-      - mvn package -B -Dmaven.test.skip=true
-
-  push:
-    image: docker:dind
-    commands:
-      - docker login --username=conleyxie --password=xcl@900123
-      - docker build -t spring-boot:master -f Dockerfile .
-      - docker tag spring-boot:master docker.io/conleyxie/spring-boot:master
-      - docker push docker.io/conleyxie/spring-boot:master
-      - echo 'success'
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-  #ssh  r
-  ssh:
-    image: appleboy/drone-ssh
-    host: 192.168.224.131
-    username: root
-    password: xcl@900123
-    port: 22
-    script:
-      - docker run -p 8085:7001 -d  docker.io/conleyxie/spring-boot:master 
+      - echo 'hello world'
       
