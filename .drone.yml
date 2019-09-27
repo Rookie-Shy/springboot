@@ -1,6 +1,5 @@
 kind: pipeline
 name: default
-#Test Helm
 steps:
 - name: busybox
   image: busybox
