@@ -3,6 +3,8 @@ name: default
 steps:
 - name: busybox
   image: busybox
+  environment:
+    name: hello wolrd
   commands:
-    - echo "hello world"
+    - echo ${name}
     
