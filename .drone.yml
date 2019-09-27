@@ -2,7 +2,7 @@ kind: pipeline
 name: default
 #Test Helm
 steps:
-- name: bs
+- name: busybox
   image: busybox
   commands:
     - echo "hello world"
