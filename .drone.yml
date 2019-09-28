@@ -1,11 +1,11 @@
 kind: pipeline
 name: default
-#1
+#Test Helm
 steps:
 - name: busybox
   image: busybox
-  environment:
-    name: hello wolrd
   commands:
-    - echo ${name}
+  - echo $${DOCKER_USERNAME}
+  - echo $${DOCKER_PASSWORD}
+  secrets: [ docker_username, docker_password ]
     
