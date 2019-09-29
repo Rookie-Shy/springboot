@@ -4,8 +4,13 @@ name: default
 steps:
 - name: busybox
   image: busybox
+  environment:
+    PASSWORD:
+      from_secret: password
+    USERNAME:
+      from_secret: username
   commands:
-  - echo $${DOCKER_USERNAME}
-  - echo $${DOCKER_PASSWORD}
-  secrets: [ docker_username, docker_password ]
+  - echo ${PASSWORD}
+  - echo ${USERNAME}
+  
     
