@@ -10,7 +10,7 @@ steps:
     USERNAME:
       from_secret: username
   commands:
-  - echo ${PASSWORD}
-  - echo ${USERNAME}
+  - echo $PASSWORD
+  - echo $USERNAME
   
     
