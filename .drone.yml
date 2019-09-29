@@ -1,4 +1,5 @@
 kind: pipeline
+type: exec
 name: default
 #Test 111
 steps:
@@ -12,5 +13,8 @@ steps:
   commands:
   - echo $PASSWORD
   - echo $USERNAME
+ # 设置每一步的依赖关系，从而设置顺序 
+ # depends_on:
+ #   - docker_steps
   
     
